@@ -21,7 +21,20 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
+
             ),
+			'etnetera' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/etnetera',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Etnetera',
+                        'action'     => 'index',
+                    ),
+                ),
+
+            ),
+
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -52,7 +65,7 @@ return array(
                     ),
                 ),
             ),
-        ),
+          ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
@@ -75,7 +88,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'Application\Controller\Index' => Controller\IndexController::class,
+            'Application\Controller\Etnetera' => Controller\EtneteraController::class
         ),
     ),
     'view_manager' => array(

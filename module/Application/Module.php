@@ -45,7 +45,7 @@ class Module
      {
          return array(
              'factories' => array(
-                 'Aapplication\Model\ActionLogTable' =>  function($sm) {
+                 'Application\Model\ActionLogTable' =>  function($sm) {
                      $tableGateway = $sm->get('ActionLogTableGateway');
                      $table = new ActionLogTable($tableGateway);
                      return $table;
@@ -53,8 +53,8 @@ class Module
                  'ActionLogTableGateway' => function ($sm) {
                      $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                      $resultSetPrototype = new ResultSet();
-                     $resultSetPrototype->setArrayObjectPrototype(new Album());
-                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+                     $resultSetPrototype->setArrayObjectPrototype(new ActionLog());
+                     return new TableGateway('actionLog', $dbAdapter, null, $resultSetPrototype);
                  },
              ),
          );
