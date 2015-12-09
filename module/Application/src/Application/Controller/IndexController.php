@@ -14,8 +14,23 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+	protected $actionLogTable;
+
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(
+			array(
+				'actionLog' => $this->getActionLogTable()->fetchAll(),
+			);
+		);
     }
+
+	public function getActionLogTable()
+	{
+	 if (!$this->actionLogTable) {
+		 $sm = $this->getServiceLocator();
+		 $this->actionLogTable = $sm->get('Application\Model\ActionLogTable');
+	 }
+	 return $this->actionLogTable;
+	}
 }

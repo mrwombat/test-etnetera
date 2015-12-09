@@ -11,6 +11,10 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Application\Model\ActionLog;
+use Application\Model\ActionLogTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 
 class Module
 {
@@ -36,4 +40,25 @@ class Module
             ),
         );
     }
+
+     public function getServiceConfig()
+     {
+         return array(
+             'factories' => array(
+                 'Aapplication\Model\ActionLogTable' =>  function($sm) {
+                     $tableGateway = $sm->get('ActionLogTableGateway');
+                     $table = new ActionLogTable($tableGateway);
+                     return $table;
+                 },
+                 'ActionLogTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Album());
+                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+                 },
+             ),
+         );
+     }
+
+
 }
