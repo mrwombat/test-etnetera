@@ -1,0 +1,12 @@
+<div class="jumbotron">
+<table> 
+	<?php foreach ($log as $row): ?>
+		<tr class="logContainer">
+			<td><?php echo $this->escapeHtml($row->gitowner); ?></td>
+			<td><?php echo $this->escapeHtml($row->ip); ?></td>
+			<td><?php echo $this->escapeHtml(Date('Y-m-d H:i:s',$row->timestamp)); ?></td>
+		</tr>
+	<?php endforeach; ?>
+</table> 
+</div>
+

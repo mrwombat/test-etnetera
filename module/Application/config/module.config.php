@@ -23,10 +23,10 @@ return array(
                 ),
 
             ),
-			'etnetera' => array(
+			'repo' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/etnetera',
+                    'route'    => '/repo',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Etnetera',
                         'action'     => 'index',
@@ -34,6 +34,30 @@ return array(
                 ),
 
             ),
+			'log' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/log',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Etnetera',
+                        'action'     => 'log',
+                    ),
+                ),
+
+            ),
+			'cleaner' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/cleaner',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Etnetera',
+                        'action'     => 'cleaner',
+                    ),
+                ),
+            ),
+
+
+
 
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new

@@ -2,6 +2,7 @@
 namespace Application\Model;
 
  use Zend\Db\TableGateway\TableGateway;
+ use Zend\Db\Sql\Select;
 
  class ActionLogTable
  {
@@ -14,16 +15,18 @@ namespace Application\Model;
 
      public function fetchAll()
      {
-         $resultSet = $this->tableGateway->select();
+		 $resultSet = $this->tableGateway->select(function (Select $select){
+			$select->order('timestamp DESC');
+		 });
          return $resultSet;
      }
 
-     public function save(ActionLog $data)
+     public function save($data)
      {
          $dataPrepared = array(
-             'artist' => $data->timestamp,
-             'title'  => $data->gitowner,
-             'ip'  => $data->ip,
+             'gitowner'  => (!empty($data['gitowner'])) ? $data['gitowner'] : null,
+             'ip'  => $_SERVER['REMOTE_ADDR'],
+             'timestamp'  => time(),
          );
 
          $id = (int) $data->id;

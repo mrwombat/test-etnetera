@@ -1,5 +1,23 @@
 <div class="jumbotron">
     <h1><?php echo sprintf($this->translate('Etnetera TEST %s'), '<span class="zf-green">', '</span>') ?></h1>
+	<?php $form->setAttribute('action', $this->url('repo', array('action' => 'search'))); $form->prepare();?>
+	<?php echo $this->form()->openTag($form) ?>
 	<?php echo $this->formCollection($form) ?>
+	<?php echo $this->form()->closeTag() ?>
+
+
+	<?php foreach ($repo as $repodetail): ?>
+		<div class="repoContainer">
+		<h2><a href="<?php echo $this->escapeHtml($repodetail->html_url); ?>" target="_blank"><?php echo $this->escapeHtml($repodetail->name); ?></a></h2>
+			<p class="Info">
+				 <div><b><?php echo $this->translate('URL') ?></b>:<?php echo $this->escapeHtml($repodetail->clone_url); ?></div>
+				 <div>
+					<a target="_blank" href="<?php echo $this->escapeHtml($repodetail->html_url); ?>/issues" >issues</a>,
+					<a target="_blank" href="<?php echo $this->escapeHtml($repodetail->html_url); ?>/wiki" >wiki</a>,
+				</div>
+				 <div><b><?php echo $this->translate('URL') ?></b>:<?php echo $this->escapeHtml($repodetail->clone_url); ?></div>
+			</p>
+		</div>
+	<?php endforeach; ?>
 </div>
 
