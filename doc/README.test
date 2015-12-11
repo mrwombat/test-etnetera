@@ -1,13 +1,17 @@
 TODO:
 =============
 paginator
-validace
+validation
 auth
 cleaner
 
 
-Install DB:
+Install:
 ================
+- setup nginx
+- create DB
+- crate actionLog table
+
 
 CREATE TABLE IF NOT EXISTS `actionLog` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
