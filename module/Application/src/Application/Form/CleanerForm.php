@@ -2,6 +2,7 @@
 namespace Application\Form;
 
  use Zend\Form\Form;
+ use Zend\I18n\Validator\IsInt;
 
  class CleanerForm extends Form
  {
@@ -12,6 +13,7 @@ namespace Application\Form;
 
          $this->add(array(
              'name' => 'pwd',
+             'required' => true,
              'type' => 'Password',
              'options' => array(
                  'label' => 'Password:',
@@ -20,10 +22,14 @@ namespace Application\Form;
 
          $this->add(array(
              'name' => 'hour',
+             'required' => true,
              'type' => 'Text',
              'options' => array(
                  'label' => 'Hour number:',
              ),
+			'validators' => array(
+				new \Zend\I18n\Validator\IsInt()
+			 ),
          ));
  
          $this->add(array(

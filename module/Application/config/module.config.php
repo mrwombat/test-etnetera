@@ -12,6 +12,17 @@ namespace Application;
 return array(
     'router' => array(
         'routes' => array(
+        'paginator' => array(
+            'type' => 'segment',
+            'options' => array(
+                'route' => '/paginator/[page/:page]',
+                'defaults' => array(
+					'controller' => 'Application\Controller\Etnetera',
+					'action'     => 'logPaginator',
+                    'page' => 1,
+                ),
+            ),
+        ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -35,12 +46,13 @@ return array(
 
             ),
 			'log' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'type' => 'segment',
                 'options' => array(
-                    'route'    => '/log',
+                    'route'    => '/log/[page/:page]',
                     'defaults' => array(
                         'controller' => 'Application\Controller\Etnetera',
                         'action'     => 'log',
+                        'page'     => 1,
                     ),
                 ),
 

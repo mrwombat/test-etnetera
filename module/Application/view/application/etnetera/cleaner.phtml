@@ -1,5 +1,8 @@
 <div class="jumbotron">
     <h1><?php echo $this->translate('Cleaner') ?></h1>
+	<?php if (isset($message)): ?>
+		<?php echo  $this->escapeHtml($message); ?>
+	<?php endif; ?>
 	<?php $form->setAttribute('action', $this->url('cleaner', array('action' => 'cleaner'))); $form->prepare();?>
 	<?php echo $this->form()->openTag($form) ?>
 	<?php echo $this->formCollection($form) ?>

@@ -1,9 +1,6 @@
 TODO:
 =============
 paginator
-validation
-auth
-cleaner
 
 
 Install:
@@ -11,6 +8,8 @@ Install:
 - setup nginx
 - create DB
 - crate actionLog table
+
+aptitude install php5-intl
 
 
 CREATE TABLE IF NOT EXISTS `actionLog` (
